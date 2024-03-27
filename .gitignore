@@ -1,0 +1,19 @@
+# Exclude
+*
+
+# Include
+!docs
+!docs/**
+!src
+!src/**
+!static
+!static/**
+!.gitignore
+!svelte.config.js
+!biome.json
+!package.json
+!tsconfig.json
+!README.md
+!vite.config.ts
+!.npmrc
+!LICENSE
