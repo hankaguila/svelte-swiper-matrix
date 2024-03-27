@@ -18,17 +18,17 @@
    * Examples (c means cell)
    *   - `dim="2x1"`
    *     ```
-   *     c1
-   *     c2
+   *     1
+   *     2
    *     ```
    *   - `dim="1x2"`
    *     ```
-   *     c1 c2
+   *     1 2
    *     ```
    *   - `dim="2x2"`
    *     ```
-   *     c1 c2
-   *     c3 c4
+   *     1 2
+   *     3 4
    *     ```
    */
   export let dim = "";
@@ -36,17 +36,17 @@
   /**
    * Matrix cells to omit
    * >
-   * Examples (c means cell)
+   * Examples:
    *   - `dim="2x2" omit={[2]}`
    *     ```
-   *     c1 __
-   *     c3 c4
+   *     1 _
+   *     3 4
    *     ```
    *   - `dim="3x3" omit={[1, 3, 7, 9]}`
    *     ```
-   *     __ c2 __
-   *     c4 c5 c6
-   *     __ c8 __
+   *     _ 2 _
+   *     4 5 6
+   *     _ 8 _
    *     ```
    */
   export let omit: number[] = [];
@@ -97,6 +97,26 @@
   });
 </script>
 
+<!--
+@component
+
+A Swiper matrix component
+>
+Each child is a cell in the matrix. Cells are sequenced left-to-right and
+top-to-bottom.
+>
+Example:
+  - `<Swiper dim="2x2">...</Swiper>`
+    ```
+    1 2
+    3 4
+    ```
+
+@prop dim {string} - Matrix dimensions
+@prop omit {number[]} - Matrix cells to omit
+@prop noArrows {boolean} - Boolean for hiding arrows
+@prop arrowProps {Record<string, any>} - SwiperArrows $$restProps
+-->
 <div
   id="swiper"
   bind:this={$matrix}
@@ -108,7 +128,6 @@
   on:touchstart={onTouchStart}
   on:touchmove={onTouchMove}
   on:touchend={onTouchEnd}
-  {...$$restProps}
 >
   <slot />
 

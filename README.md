@@ -3,7 +3,6 @@
 A minimal swiper for Svelte
 
 [![npm-version](https://img.shields.io/npm/v/svelte-swiper-matrix.svg)](https://www.npmjs.com/package/svelte-swiper-matrix)
-[![npm bundle size](https://img.shields.io/bundlephobia/min/svelte-swiper-matrix.svg)](https://www.npmjs.com/package/svelte-swiper-matrix)
 
 ## Contents
 
@@ -16,7 +15,7 @@ A minimal swiper for Svelte
 ## Features
 
 - Intuitive matrix layout
-- No buttons, 🔔 or 🎉; swipe with arrow keys, mouse wheel 
+- No buttons, 🔔 or 🎉; swipe with arrow keys, mouse wheel
   (vertical) or swiping gestures (mobile)
 - Extremely simple; one component, 1-2 props, go
 
@@ -58,10 +57,10 @@ npm i svelte-swiper-matrix
 | `omit`         | `number[]`              | `[]`                     | Matrix cells to omit            |
 | -------------- | ----------------------- | ------------------------ | ------------------------------- |
 | `noArrows`     | `boolean`               | `false`                  | Boolean for hiding arrows       |
-| `...`          | `Record<string, any>`   | `undefined`              | Swiper `$$restProps`            |
 | `arrowProps`   | `Record<string, any>`   | `undefined`              | SwiperArrows `$$restProps`      |
 
-> Props after the divider are for experimental or edge cases, ignore them gladly
+> Props after the divider are for experimental or edge cases and can 
+> generally be ignored
 
 ## Examples
 
