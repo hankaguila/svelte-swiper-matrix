@@ -1,7 +1,7 @@
 import { moveDown, moveLeft, moveRight, moveUp } from "$lib/helpers";
 
 export function onMouseEnter(event: Event) {
-  (event.target as HTMLElement).focus()
+  (event.target as HTMLElement).focus();
 }
 
 export function onKeydown(event: KeyboardEvent) {

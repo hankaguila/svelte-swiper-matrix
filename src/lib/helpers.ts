@@ -1,6 +1,11 @@
 import type { CellCoords } from "./types";
 import { get } from "svelte/store";
-import { cells, arrowsRerenderTrigger, nextMoves, updateNextMove } from "$lib/stores";
+import {
+  cells,
+  arrowsRerenderTrigger,
+  nextMoves,
+  updateNextMove
+} from "$lib/stores";
 
 export function parseDim(dim: string) {
   const [jMax, iMax] = dim.split("x").map((s) => Number.parseInt(s));
@@ -18,7 +23,7 @@ export function getAllCoords(iMax: number, jMax: number, omit: number[] = []) {
   if (!omit.every((num) => num >= 1 && num <= size)) {
     throw new Error("One or more omit[] items out of bounds");
   }
-  const coords: CellCoords[] = []; // change back to let if it breaks
+  const coords: CellCoords[] = [];
   let step = 0;
   for (let j = 0; j < jMax; j++) {
     for (let i = 0; i < iMax; i++) {
@@ -33,7 +38,9 @@ export function getAllCoords(iMax: number, jMax: number, omit: number[] = []) {
 }
 
 function areCoordsAvailable({ i, j }: CellCoords) {
-  return Boolean(get(cells).find(({ coords }) => coords.i === i && coords.j === j));
+  return Boolean(
+    get(cells).find(({ coords }) => coords.i === i && coords.j === j)
+  );
 }
 
 function canMoveUp() {
@@ -68,8 +75,7 @@ export function positionChildren(iOffset = 0, jOffset = 0) {
     cell.coords.i += iOffset;
     cell.coords.j += jOffset;
     cell.style.dynamic =
-      ` left: ${ cell.coords.i * 100 }vw;`
-      + ` top: ${ cell.coords.j * 100 }vh;`;
+      ` left: ${cell.coords.i * 100}vw;` + ` top: ${cell.coords.j * 100}vh;`;
     cell.element.setAttribute("style", cell.style.base + cell.style.dynamic);
   }
   updateNextMoves();
