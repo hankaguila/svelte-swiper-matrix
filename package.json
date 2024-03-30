@@ -1,6 +1,6 @@
 {
   "name": "svelte-swiper-matrix",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "A minimal swiper for Svelte",
   "keywords": [
     "swiper",
@@ -15,9 +15,7 @@
   "homepage": "https://github.com/hankaguila/svelte-swiper-matrix#readme",
   "bugs": "https://github.com/hankaguila/svelte-swiper-matrix/issues",
   "files": [
-    "dist",
-    "!dist/SwiperArrows.svelte",
-    "!dist/SwiperArrows.svelte.d.ts"
+    "dist"
   ],
   "svelte": "./dist/index.js",
   "types": "./dist/index.d.ts",

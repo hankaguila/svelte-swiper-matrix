@@ -10,7 +10,7 @@
     onTouchStart,
     onWheel
   } from "./handlers";
-  import SwipeArrows from "./SwiperArrows.svelte";
+  import SwiperArrows from "./_SwiperArrows.svelte";
 
   /**
    * Matrix dimensions in `row x col` format
@@ -135,7 +135,7 @@ Example:
   <slot />
 
   {#if !noArrows}
-    <SwipeArrows {...arrowProps} />
+    <SwiperArrows {...arrowProps} />
   {/if}
 </div>
 
