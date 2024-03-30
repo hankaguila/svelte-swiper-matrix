@@ -10,7 +10,7 @@
 !static/**
 !.gitignore
 !svelte.config.js
-!biome.json
+!.prettierrc.json
 !package.json
 !tsconfig.json
 !README.md
