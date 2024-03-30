@@ -67,19 +67,22 @@
    *     </Swiper>
    *     ```
    */
-  export let arrowProps: Record<string, any> = null;
+  export let arrowProps: Record<string, any> = {};
 
   function initializeCells() {
-    $children = Array.from($matrix.children);
+    $children = Array.from($matrix.children).filter(
+      (child) => child.id !== "swiper-arrows"
+    );
     if (dim === "") {
       dim = `${$children.length}x1`;
     }
     const { iMax, jMax } = parseDim(dim);
     const allCoords = getAllCoords(iMax, jMax, omit);
     for (const i in allCoords) {
-      const baseStyle = $children[i].getAttribute("style")
-        + " width: 100%; height: 100%; max-width: 100%; max-height: 100%;"
-        + " position: absolute; transition: all 0.3s ease;";
+      const baseStyle =
+        $children[i].getAttribute("style") +
+        " width: 100%; height: 100%; max-width: 100%; max-height: 100%;" +
+        " position: absolute; transition: all 0.3s ease;";
       $cells.push({
         element: $children[i],
         coords: allCoords[i],
