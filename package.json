@@ -1,6 +1,6 @@
 {
   "name": "svelte-swiper-matrix",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "description": "A minimal swiper for Svelte",
   "keywords": [
     "swiper",
@@ -17,15 +17,16 @@
   "files": [
     "dist"
   ],
-  "svelte": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "type": "module",
+  "svelte": "./dist/index.js",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "svelte": "./dist/index.js"
-    }
+    },
+    "./swiper/*": null
   },
+  "type": "module",
   "scripts": {
     "ts": "esrun",
     "dev": "vite dev",

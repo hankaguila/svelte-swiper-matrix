@@ -10,7 +10,7 @@
     onTouchStart,
     onWheel
   } from "./handlers";
-  import SwiperArrows from "./_SwiperArrows.svelte";
+  import SwiperArrows from "./SwiperArrows.svelte";
 
   /**
    * Matrix dimensions in `row x col` format

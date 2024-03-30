@@ -1,4 +1,4 @@
-import type { Cell, NextMoves } from "$lib/types";
+import type { Cell, NextMoves } from "$lib/swiper/types";
 import { writable } from "svelte/store";
 
 export const matrix = writable<Element>();

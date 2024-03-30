@@ -1,4 +1,4 @@
-import { moveDown, moveLeft, moveRight, moveUp } from "$lib/helpers";
+import { moveDown, moveLeft, moveRight, moveUp } from "$lib/swiper/helpers";
 
 export function onMouseEnter(event: Event) {
   (event.target as HTMLElement).focus();

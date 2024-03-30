@@ -5,7 +5,7 @@ import {
   arrowsRerenderTrigger,
   nextMoves,
   updateNextMove
-} from "$lib/stores";
+} from "$lib/swiper/stores";
 
 export function parseDim(dim: string) {
   const [jMax, iMax] = dim.split("x").map((s) => Number.parseInt(s));
