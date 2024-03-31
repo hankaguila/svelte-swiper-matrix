@@ -152,6 +152,10 @@ Example:
     height: 100%;
   }
 
+  #swiper:focus-visible {
+    outline: initial;
+  }
+
   /* Avoid large images stretching beyond containers */
   :global(#swiper *) {
     max-width: 100%;
