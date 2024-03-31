@@ -48,7 +48,7 @@ Then, simply do something like this:
   import { Swiper } from "svelte-swiper-matrix";
 </script>
 
-<Swiper dim="2x1>
+<Swiper dim="2x1">
   <div class="full-size">...</div>
   <div class="full-size">...</div>
 </Swiper>
