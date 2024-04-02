@@ -70,6 +70,14 @@ Then, simply do something like this:
 > ⚠️ Make sure the number of Swiper children `==` the number of available matrix
 > cells
 
+- If your browser shows an `outline` around Swiper when `focus:visible` is 
+  triggered, remove it like this:
+  ```css
+  #swiper:focus-visible {
+    outline: none;
+  }
+  ```
+
 ## Props
 
 | Prop Name    | Type                  | Default Value            | Description                   |
