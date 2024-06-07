@@ -5,6 +5,7 @@ export function onMouseEnter(event: Event) {
 }
 
 export function onKeydown(event: KeyboardEvent) {
+  if (event.ctrlKey) return; // just in case
   const { key } = event;
   if (key === "ArrowUp") {
     moveUp();
@@ -18,6 +19,7 @@ export function onKeydown(event: KeyboardEvent) {
 }
 
 export function onWheel(event: WheelEvent) {
+  if (event.ctrlKey) return; // to avoid scrolling on viewport resize
   const { deltaY } = event;
   if (deltaY > 0) {
     moveDown();
