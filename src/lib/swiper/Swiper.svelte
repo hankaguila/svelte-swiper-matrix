@@ -1,6 +1,11 @@
 <script lang="ts">
-  import { onMount } from "svelte";
-  import { getAllCoords, parseDim, positionChildren } from "./helpers";
+  import { onDestroy, onMount } from "svelte";
+  import {
+    getAllCoords,
+    parseDim,
+    positionChildren,
+    resetPosition
+  } from "./helpers";
   import { cells, children, matrix } from "./stores";
   import {
     onKeydown,
@@ -98,6 +103,8 @@
     initializeCells();
     positionChildren(-$cells[0].coords.i, -$cells[0].coords.j);
   });
+
+  onDestroy(resetPosition);
 </script>
 
 <!--

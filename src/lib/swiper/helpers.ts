@@ -82,6 +82,13 @@ export function positionChildren(iOffset = 0, jOffset = 0) {
   arrowsRerenderTrigger.set(!get(arrowsRerenderTrigger));
 }
 
+export function resetPosition() {
+  for (const cell of get(cells)) {
+    cell.style.dynamic = "";
+    cell.element.setAttribute("style", cell.style.base);
+  }
+}
+
 export function moveUp() {
   if (!canMoveUp()) {
     return;
