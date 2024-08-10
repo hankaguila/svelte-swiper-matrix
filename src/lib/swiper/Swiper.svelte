@@ -1,12 +1,7 @@
 <script lang="ts">
-  import { onDestroy, onMount } from "svelte";
-  import {
-    getAllCoords,
-    parseDim,
-    positionChildren,
-    resetPosition
-  } from "./helpers";
-  import { cells, children, matrix } from "./stores";
+  import type { Swiper } from "$lib/swiper/types";
+  import { onMount } from "svelte";
+  import { getAllCoords, parseDim, positionChildren } from "./helpers";
   import {
     onKeydown,
     onMouseEnter,
@@ -74,37 +69,46 @@
    */
   export let arrowProps: Record<string, any> = {};
 
-  function initializeCells() {
-    $children = Array.from($matrix.children).filter(
+  const swiper: Swiper = {
+    element: null,
+    cells: [],
+    nextMoves: {
+      up: false,
+      right: false,
+      down: false,
+      left: false
+    }
+  };
+
+  function init() {
+    const cells = Array.from(swiper.element!.children).filter(
       (child) => child.id !== "swiper-arrows"
     );
-    if (dim === "") {
-      dim = `${$children.length}x1`;
+
+    if (!dim) {
+      dim = `${cells.length}x1`;
     }
+
     const { iMax, jMax } = parseDim(dim);
+
     const allCoords = getAllCoords(iMax, jMax, omit);
-    for (const i in allCoords) {
-      const baseStyle =
-        $children[i].getAttribute("style") +
-        " width: 100%; height: 100%; max-width: 100%; max-height: 100%;" +
-        " position: absolute; transition: all 0.3s ease;";
-      $cells.push({
-        element: $children[i],
-        coords: allCoords[i],
+
+    allCoords.forEach((coords, i) => {
+      swiper.cells.push({
+        element: cells[i],
+        coords,
         style: {
-          base: baseStyle,
+          base: `${cells[i].getAttribute("style")} width: 100%; height: 100%; max-width: 100%; max-height: 100%; position: absolute; transition: all 0.3s ease;`,
           dynamic: ""
         }
       });
-    }
+    });
   }
 
   onMount(() => {
-    initializeCells();
-    positionChildren(-$cells[0].coords.i, -$cells[0].coords.j);
+    init();
+    positionChildren(swiper, 0, 0);
   });
-
-  onDestroy(resetPosition);
 </script>
 
 <!--
@@ -129,20 +133,20 @@ Example:
 -->
 <div
   id="swiper"
-  bind:this={$matrix}
+  bind:this={swiper.element}
   tabindex="-1"
   role="presentation"
   on:mouseenter={onMouseEnter}
-  on:keydown={onKeydown}
-  on:wheel={onWheel}
+  on:keydown={(event) => onKeydown(event, swiper)}
+  on:wheel={(event) => onWheel(event, swiper)}
   on:touchstart={onTouchStart}
   on:touchmove={onTouchMove}
-  on:touchend={onTouchEnd}
+  on:touchend={() => onTouchEnd(swiper)}
 >
   <slot />
 
   {#if !noArrows}
-    <SwiperArrows {...arrowProps} />
+    <SwiperArrows nextMoves={swiper.nextMoves} {...arrowProps} />
   {/if}
 </div>
 

@@ -1,8 +1,11 @@
 <script lang="ts">
+  import type { NextMoves } from "$lib/swiper/types";
   import { fade } from "svelte/transition";
   import { spring } from "svelte/motion";
   import { onMount } from "svelte";
-  import { arrowsRerenderTrigger, nextMoves } from "./stores";
+  import { arrowsRerenderTrigger } from "./stores";
+
+  export let nextMoves: NextMoves;
 
   const arrowSpring = spring(0, { stiffness: 0.1, damping: 0.1 });
 
@@ -23,7 +26,7 @@
     in:fade={{ delay: 300, duration: 500 }}
     {...$$restProps}
   >
-    {#if $nextMoves.up}
+    {#if nextMoves.up}
       <span
         class="material-symbols-outlined up"
         style="transform: translateY(-{$arrowSpring}rem)"
@@ -32,7 +35,7 @@
       </span>
     {/if}
 
-    {#if $nextMoves.right}
+    {#if nextMoves.right}
       <span
         class="material-symbols-outlined right"
         style="transform: translateX({$arrowSpring}rem)"
@@ -41,7 +44,7 @@
       </span>
     {/if}
 
-    {#if $nextMoves.down}
+    {#if nextMoves.down}
       <span
         class="material-symbols-outlined down"
         style="transform: translateY({$arrowSpring}rem)"
@@ -50,7 +53,7 @@
       </span>
     {/if}
 
-    {#if $nextMoves.left}
+    {#if nextMoves.left}
       <span
         class="material-symbols-outlined left"
         style="transform: translateX(-{$arrowSpring}rem)"

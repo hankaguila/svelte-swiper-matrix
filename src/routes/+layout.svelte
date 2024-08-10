@@ -1,5 +1,11 @@
 <script>
   import "$styles";
+  import { onMount } from "svelte";
+
+  let mounted = false;
+  onMount(() => (mounted = true));
 </script>
 
-<slot />
+{#if mounted}
+  <slot />
+{/if}

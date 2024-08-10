@@ -61,14 +61,13 @@ Then, simply do something like this:
 </style>
 ```
 
-- Each `Swiper` child is positioned in the next available matrix cell
+- Each `Swiper` child is positioned in the next available cell
 - In general, `Swiper` children should be fully sized containers
 
 > ✅ `dim` prop can actually be omitted for one-column matrices like `2x1`,
 > `3x1`, etc.
 
-> ⚠️ Make sure the number of Swiper children `==` the number of available matrix
-> cells
+> ⚠️ Make sure the number of Swiper children `==` the number of available cells
 
 - If your browser shows an `outline` around Swiper when `focus:visible` is 
   triggered, remove it like this:
@@ -81,9 +80,9 @@ Then, simply do something like this:
 ## Props
 
 | Prop Name    | Type                  | Default Value            | Description                   |
-| ------------ | --------------------- | ------------------------ | ----------------------------- |
-| `dim`        | `string`              | `"${children.length}x1"` | Matrix `row x col` dimensions |
-| `omit`       | `number[]`            | `[]`                     | Matrix cells to omit          |
+| ------------ | --------------------- | ------------------------ |-------------------------------|
+| `dim`        | `string`              | `"${children.length}x1"` | Swiper `row x col` dimensions |
+| `omit`       | `number[]`            | `[]`                     | Swiper cells to omit          |
 | `noArrows`   | `boolean`             | `false`                  | Boolean for hiding arrows     |
 | `arrowProps` | `Record<string, any>` | `{}`                     | `SwiperArrows.$$restProps`    |
 

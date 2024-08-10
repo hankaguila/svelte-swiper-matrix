@@ -19,6 +19,10 @@ const config = {
       $widgets: "src/widgets"
     },
     outDir: "build"
+  },
+
+  compilerOptions: {
+    enableSourcemap: true
   }
 };
 

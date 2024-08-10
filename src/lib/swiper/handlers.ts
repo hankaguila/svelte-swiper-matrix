@@ -1,30 +1,35 @@
+import type { Swiper } from "$lib/swiper/types";
 import { moveDown, moveLeft, moveRight, moveUp } from "$lib/swiper/helpers";
 
 export function onMouseEnter(event: Event) {
   (event.target as HTMLElement).focus();
 }
 
-export function onKeydown(event: KeyboardEvent) {
+export function onKeydown(event: KeyboardEvent, swiper: Swiper) {
   if (event.ctrlKey) return; // just in case
+
   const { key } = event;
+
   if (key === "ArrowUp") {
-    moveUp();
+    moveUp(swiper);
   } else if (key === "ArrowRight") {
-    moveRight();
+    moveRight(swiper);
   } else if (key === "ArrowDown") {
-    moveDown();
+    moveDown(swiper);
   } else if (key === "ArrowLeft") {
-    moveLeft();
+    moveLeft(swiper);
   }
 }
 
-export function onWheel(event: WheelEvent) {
+export function onWheel(event: WheelEvent, swiper: Swiper) {
   if (event.ctrlKey) return; // to avoid scrolling on viewport resize
+
   const { deltaY } = event;
+
   if (deltaY > 0) {
-    moveDown();
+    moveDown(swiper);
   } else {
-    moveUp();
+    moveUp(swiper);
   }
 }
 
@@ -43,23 +48,23 @@ export function onTouchMove(event: TouchEvent) {
   touchEndY = event.touches[0].clientY;
 }
 
-export function onTouchEnd() {
+export function onTouchEnd(swiper: Swiper) {
   const deltaX = touchEndX - touchStartX;
   const deltaY = touchEndY - touchStartY;
 
   if (Math.abs(deltaX) > Math.abs(deltaY)) {
     if (deltaX > 0) {
       // Swiped right
-      moveLeft();
+      moveLeft(swiper);
     } else {
       // Swiped left
-      moveRight();
+      moveRight(swiper);
     }
   } else if (deltaY > 0) {
     // Swiped down
-    moveUp();
+    moveUp(swiper);
   } else {
     // Swiped up
-    moveDown();
+    moveDown(swiper);
   }
 }
